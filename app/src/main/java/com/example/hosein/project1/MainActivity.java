@@ -10,28 +10,37 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button button;
+    Button button, save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = (Button) findViewById(R.id.btnad);
-button.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
 
 
-AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater layoutInflater = MainActivity.this.getLayoutInflater();
+                final View view = layoutInflater.inflate(R.layout.msg, null);
+                Button buttonsave = (Button) view.findViewById(R.id.save);
+                buttonsave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MainActivity.this,"Save Information",Toast.LENGTH_SHORT).show();
+                       finish();
+                    }
+                });
 
+                AlertDialog alertDialog = builder.create();
+                alertDialog.setView(view);
+                alertDialog.show();
 
-    }
-});
-
-
-
-
+            }
+        });
 
 
     }

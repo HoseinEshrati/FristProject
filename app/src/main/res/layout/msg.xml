@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:layout_gravity="end"
+        android:id="@+id/save"
         />
 
 </LinearLayout>
